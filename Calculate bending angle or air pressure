@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <iostream>
+#include <math.h>
+using namespace std; 
+int main(){
+	    double L,H,Y,L1,L2,H1,H2,H3,T1,T2,T3,T4,C1,C2,n,Y1,theta,a[26],b[17];//Define parameters and arrays. N represents the number of chambers, C1 and C2 are material parameters, and the meaning of other parameters is shown in Figure 1.
+		  for(int i=0;i<17;i++)
+	    cin>>b[i];//Input parameters in defined order.
+      int j=0;
+			a[j++]=b[0]/b[16];
+			a[j++]=b[0]+0.5*(b[7]-0.5*b[11])*b[16];
+			a[j++]=(a[1]/b[14]-(b[3]+2*b[9]))/a[1]*(b[0]+(b[7]-0.5*b[11])*b[16]);
+		  a[j++]=(a[1]/b[14]-(b[3]+2*b[9]))/a[1]*(b[0]+0.5*b[7]*b[16]);
+			a[j++]=(b[0]+0.5*b[7]*b[16])/b[0];		  
+	    a[j++]=(a[1]/b[14]-b[3])/a[1]*(b[0]+(b[7]-0.5*b[11])*b[16]);
+			a[j++]=(a[5]+b[4]+2*b[9])/2/(b[4]+2*b[9]);
+			a[j++]=(b[0]+0.5*b[7]*b[16])/(b[0]+0.5*(b[7]-0.5*b[11])*b[16]);
+			a[j++]=(a[1]-b[14]*(b[3]+2*b[9]))/b[14]/a[1]*b[16];
+			a[j++]=((a[0]+0.5*b[11])*tan(a[8])-b[4])*cos(a[8]);
+			a[j++]=2*asin((a[2]-b[4])/2/(b[5]+b[11]-b[7]));
+			a[j++]=a[4]*a[4]+1/a[4]/a[4]-2;
+			a[j++]=a[6]*a[6]+1/a[6]/a[6]-2;
+			a[j++]=a[7]*a[7]+1/a[7]/a[7]-2;
+			a[j++]=a[11]*b[12]+b[13]*a[11]*a[11];
+			a[j++]=a[12]*b[12]+b[13]*a[12]*a[12];
+			a[j++]=a[13]*b[12]+b[13]*a[13]*a[13];
+			a[j++]=a[14]*b[0]*(b[7]-b[11])*2*b[8]/b[14];
+			a[j++]=(b[4]+2*b[9])*(b[6]-b[10])*2*b[8]*a[15];
+			a[j++]=a[16]*(b[7]-b[11])*(b[3]+2*b[9])*b[15];
+			a[j++]=(b[0]+0.25*b[11]*b[16])/b[0];
+			a[j++]=a[20]*a[20]+1/a[20]/a[20]-2;
+			a[j++]=a[21]*b[12]+b[13]*a[21]*a[21];
+			a[j++]=0.5*b[11]*b[0]*b[2]/b[14]*a[22];
+			a[j++]=a[23]+a[19]+a[18]+a[17];
+			a[j]=2*a[24]/((b[7]-b[11])*b[15]*0.5*(b[7]-b[11])*a[8]+(b[7]-b[11])*b[15]*a[9]+0.5*(b[5]+b[11]-b[7])*(b[5]+b[11]-b[7])*b[15]*a[10]);
+			cout<<1000*a[j];//Output gas pressure in KPa.
+}
